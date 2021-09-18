@@ -18,6 +18,7 @@ class DevicesFragment : Fragment(), DevicesAdapter.Callback {
 
     private val devicesAdapter = DevicesAdapter()
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
