@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">BluetoothControl</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="first_led">Первый светодиод</string>
+    <string name="second_led">Второй светодиод</string>
+    <string name="led_control">Управление светодиодами</string>
+    <string name="servo_control">Управление сервоприводом</string>
+</resources>
