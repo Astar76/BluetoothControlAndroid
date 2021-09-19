@@ -17,22 +17,13 @@ import java.util.List;
 
 import ru.astar.bluetoothcontrol.databinding.FragmentDevicesBinding;
 
-public class DevicesFragment extends Fragment implements DevicesAdapter.Callback {
+public class DevicesFragment extends BaseFragment<FragmentDevicesBinding> implements DevicesAdapter.Callback {
 
-    private FragmentDevicesBinding binding;
     private final DevicesAdapter devicesAdapter = new DevicesAdapter();
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentDevicesBinding.inflate(inflater, container, false);
-        return binding.getRoot();
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
+    FragmentDevicesBinding initViewBinding(LayoutInflater inflater, ViewGroup container) {
+        return FragmentDevicesBinding.inflate(inflater, container, false);
     }
 
     @Override
