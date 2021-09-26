@@ -9,7 +9,6 @@ import ru.astar.bluetoothcontrol.databinding.FragmentControlBinding
 
 class ControlFragment : Fragment() {
 
-
     private var _binding: FragmentControlBinding? = null
     private val binding: FragmentControlBinding get() = _binding!!
 

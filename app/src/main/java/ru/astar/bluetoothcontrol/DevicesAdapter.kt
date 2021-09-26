@@ -2,7 +2,7 @@ package ru.astar.bluetoothcontrol
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
-import android.view.View
+import android.bluetooth.BluetoothDevice
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.astar.bluetoothcontrol.databinding.ItemDeviceBinding
@@ -41,7 +41,7 @@ class DevicesAdapter : RecyclerView.Adapter<DevicesAdapter.DeviceViewHolder>() {
             itemView.setOnClickListener { callback?.onItemClick(item) }
 
             binding.apply {
-                textName.text = item.name
+                textName.text = item.name ?: textName.context.getString(R.string.unnamed_device)
                 textAddress.text = item.address
             }
         }

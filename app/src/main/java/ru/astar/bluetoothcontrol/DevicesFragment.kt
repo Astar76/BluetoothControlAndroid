@@ -1,11 +1,14 @@
 package ru.astar.bluetoothcontrol
 
+import android.Manifest
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import android.bluetooth.BluetoothDevice
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,6 +21,7 @@ class DevicesFragment : Fragment(), DevicesAdapter.Callback {
 
     private val devicesAdapter = DevicesAdapter()
 
+    private val viewModel: DevicesViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,16 +45,28 @@ class DevicesFragment : Fragment(), DevicesAdapter.Callback {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = devicesAdapter
         }
-        
+
         devicesAdapter.addCallback(this)
 
-        devicesAdapter.update(listOf(
-            BluetoothDevice("Device 1", "00:00:00:00:00:01"),
-            BluetoothDevice("Device 2", "00:00:00:00:00:02"),
-            BluetoothDevice("Device 3", "00:00:00:00:00:03"),
-            BluetoothDevice("Device 4", "00:00:00:00:00:04"),
-            BluetoothDevice("Device 5", "00:00:00:00:00:05")
-        ))
+        binding.fabStartScan.setOnClickListener {
+            checkLocation.launch(Manifest.permission.ACCESS_FINE_LOCATION)
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        subscribeOnViewModel()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        viewModel.stopScan()
+    }
+
+    private fun subscribeOnViewModel() {
+        viewModel.devices.observe(viewLifecycleOwner, { devices ->
+            devicesAdapter.update(devices)
+        })
     }
 
     override fun onItemClick(device: BluetoothDevice) {
@@ -58,6 +74,14 @@ class DevicesFragment : Fragment(), DevicesAdapter.Callback {
             .addToBackStack(null)
             .replace(R.id.containerFragment, ControlFragment.newInstance(device.address))
             .commit()
+    }
+
+    private val checkLocation = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { granted ->
+        if (granted) {
+            viewModel.startScan()
+        }
     }
 
     companion object {

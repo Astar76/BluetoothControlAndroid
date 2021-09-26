@@ -6,4 +6,5 @@
     <string name="second_led">Второй светодиод</string>
     <string name="led_control">Управление светодиодами</string>
     <string name="servo_control">Управление сервоприводом</string>
+    <string name="unnamed_device">Unnamed</string>
 </resources>
