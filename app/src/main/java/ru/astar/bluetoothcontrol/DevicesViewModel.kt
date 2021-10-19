@@ -1,6 +1,5 @@
 package ru.astar.bluetoothcontrol
 
-import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.le.*
 import android.os.ParcelUuid
@@ -8,13 +7,15 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import java.lang.IllegalArgumentException
 
-class DevicesViewModel: ViewModel() {
+class DevicesViewModel(adapterProvider: BluetoothAdapterProvider) : ViewModel() {
 
     private val _devices: MutableLiveData<List<BluetoothDevice>> = MutableLiveData()
     val devices: LiveData<List<BluetoothDevice>> get() = _devices
 
-    private val adapter = BluetoothAdapter.getDefaultAdapter()
+    private val adapter = adapterProvider.getAdapter()
     private var scanner : BluetoothLeScanner? = null
     private var callback : BleScanCallback? = null
 
@@ -81,5 +82,16 @@ class DevicesViewModel: ViewModel() {
 
     companion object {
         val FILTER_UUID: ParcelUuid = ParcelUuid.fromString("6f59f19e-2f39-49de-8525-5d2045f4d999")
+    }
+}
+
+class DeviceViewModelFactory(
+    private val adapterProvider: BluetoothAdapterProvider
+): ViewModelProvider.Factory {
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(DevicesViewModel::class.java)) {
+            return DevicesViewModel(adapterProvider) as T
+        }
+        throw IllegalArgumentException("View Model not found")
     }
 }

@@ -7,4 +7,8 @@
     <string name="led_control">Управление светодиодами</string>
     <string name="servo_control">Управление сервоприводом</string>
     <string name="unnamed_device">Unnamed</string>
+    <string name="enable_bluetooth">Включить Bluetooth</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="enable_bluetooth_message">Для работы приложения необходимо включить Bluetooth. Включить?</string>
 </resources>

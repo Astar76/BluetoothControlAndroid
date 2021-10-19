@@ -3,50 +3,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:layout_margin="@dimen/margin_normal"
+    android:orientation="vertical"
     tools:context=".ControlFragment">
 
     <TextView
-        android:text="@string/led_control"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="@string/led_control"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/ledFirst"
-        android:layout_marginTop="@dimen/margin_small"
-        android:text="@string/first_led"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_small"
+        android:text="@string/first_led" />
 
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/ledSecond"
-        android:layout_marginTop="@dimen/margin_small"
-        android:text="@string/second_led"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_small"
+        android:text="@string/second_led" />
 
     <TextView
-        android:text="@string/servo_control"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="@string/servo_control"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
     <TextView
         android:id="@+id/textAngleServo"
-        tools:text="Угол: 180^"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:layout_marginTop="@dimen/margin_small"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_small"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        tools:text="Угол: 180^" />
 
     <SeekBar
         android:id="@+id/angleServo"
-        android:max="180"
-        android:layout_marginTop="@dimen/margin_small"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_small"
+        android:max="180" />
 
 </LinearLayout>

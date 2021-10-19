@@ -38,7 +38,7 @@ class DevicesAdapter : RecyclerView.Adapter<DevicesAdapter.DeviceViewHolder>() {
     inner class DeviceViewHolder(private val binding: ItemDeviceBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: BluetoothDevice) {
 
-            itemView.setOnClickListener { callback?.onItemClick(item) }
+            binding.container.setOnClickListener { callback?.onItemClick(item) }
 
             binding.apply {
                 textName.text = item.name ?: textName.context.getString(R.string.unnamed_device)

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import android.bluetooth.BluetoothDevice
+import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -21,7 +22,9 @@ class DevicesFragment : Fragment(), DevicesAdapter.Callback {
 
     private val devicesAdapter = DevicesAdapter()
 
-    private val viewModel: DevicesViewModel by viewModels()
+    private val viewModel: DevicesViewModel by viewModels {
+        DeviceViewModelFactory((requireActivity().application as App).adapterProvider)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
