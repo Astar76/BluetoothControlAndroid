@@ -11,6 +11,7 @@
 * [Урок 10. Bluetooth LE, ESP-32 и Android. Пишем прошивку.](https://www.youtube.com/watch?v=X2_n3SeO42E&t=466s)
 * [Урок 11. Bluetooth LE. ESP-32. Android. Пишем приложение для управления.](https://www.youtube.com/watch?v=5SCyRju7SO0&t=1726s)
 * [Урок 12. Bluetooth LE. ESP-32. Android. Создаем сканнер BLE устройств в приложении.](https://www.youtube.com/watch?v=A9Yyhir5nT8)
+* [Урок 13. Bluetooth LE. ESP-32. Android. Подключение и передача данных.](https://www.youtube.com/watch?v=oZsrUn57f-k)
 
 Репозиторий с прошивкой под ESP-32 [здесь](https://github.com/Astar76/BluetoothControl)
 
